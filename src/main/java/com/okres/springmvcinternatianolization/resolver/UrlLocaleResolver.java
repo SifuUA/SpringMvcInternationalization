@@ -30,7 +30,7 @@ public class UrlLocaleResolver implements LocaleResolver{
         }else if (uri.startsWith(prefixRu)){
             locale = new Locale("ru", "RU");
         }else if (uri.startsWith(prefixUa)){
-            locale = new Locale("uk", "UA");
+            locale = new Locale("ua", "UA");
         }
 
         if (locale != null){

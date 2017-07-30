@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+<div style="text-align: left;padding:5px;margin:5px 0px;background:#ccc;">
     <a href="${pageContext.request.contextPath}/en/login2">Login (English)</a>
     &nbsp;&nbsp;
     <a href="${pageContext.request.contextPath}/ru/login2">Login (Russian)</a>
