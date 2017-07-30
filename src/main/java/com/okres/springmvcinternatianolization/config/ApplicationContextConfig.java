@@ -1,5 +1,6 @@
 package com.okres.springmvcinternatianolization.config;
 
+import com.okres.springmvcinternatianolization.resolver.UrlLocaleResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +15,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 
 @Configuration
-
 @ComponentScan("com.okres.springmvcinternatianolization.*")
 public class ApplicationContextConfig {
 
@@ -31,6 +31,7 @@ public class ApplicationContextConfig {
     @Bean(name = "messageSource")
     public MessageSource getMessageResource(){
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+
         messageSource.setBasename("classpath:i18n/messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
@@ -38,11 +39,13 @@ public class ApplicationContextConfig {
 
     @Bean(name = "localeResolver")
     public LocaleResolver getLocaleResolver()  {
-        CookieLocaleResolver resolver= new CookieLocaleResolver();
+       /* CookieLocaleResolver resolver= new CookieLocaleResolver();
         resolver.setCookieDomain("myAppLocaleCookie");
         // 60 minutes
 
-        resolver.setCookieMaxAge(60*60);
+        resolver.setCookieMaxAge(60*60);*/
+
+       LocaleResolver resolver = new UrlLocaleResolver();
         return resolver;
     }
 }

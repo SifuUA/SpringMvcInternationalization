@@ -1,5 +1,6 @@
 package com.okres.springmvcinternatianolization.config;
 
+import com.okres.springmvcinternatianolization.interceptor.UrlLocaleInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -22,9 +23,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+        /*LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
         localeInterceptor.setParamName("lang");
 
-        registry.addInterceptor(localeInterceptor).addPathPatterns("/*");
+        registry.addInterceptor(localeInterceptor).addPathPatterns("*//*");*/
+
+        UrlLocaleInterceptor localeInterceptor = new UrlLocaleInterceptor();
+        registry.addInterceptor(localeInterceptor).addPathPatterns("/en/*", "/ru/*", "/ua/*");
     }
 }
