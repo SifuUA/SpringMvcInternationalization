@@ -1,11 +1,11 @@
 package com.okres.springmvcinternatianolization.config;
 
-import com.sun.corba.se.spi.resolver.LocalResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -29,20 +29,20 @@ public class ApplicationContextConfig {
     }
 
     @Bean(name = "messageSource")
-    public MessageSource getMessageSource(){
+    public MessageSource getMessageResource(){
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:i18n/messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
 
-    @Bean(name = "localResolver")
-    public LocalResolver getLocalResolver(){
-        CookieLocaleResolver resolver = new CookieLocaleResolver();
-        resolver.setCookieDomain("myAppLocalCookie");
+    @Bean(name = "localeResolver")
+    public LocaleResolver getLocaleResolver()  {
+        CookieLocaleResolver resolver= new CookieLocaleResolver();
+        resolver.setCookieDomain("myAppLocaleCookie");
+        // 60 minutes
 
-        //60 minutes
         resolver.setCookieMaxAge(60*60);
-        return (LocalResolver) resolver;
+        return resolver;
     }
 }
